@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,17 +7,79 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'articles/css/style.css' %}">
+
+
+    <title>Лента постов</title>
 </head>
-<h1>Main page</h1>
 
 <body>
-    {%if articles%}
-    {%for article in articles%}
-    <h2>{{article.title}}</h2>
-    <img src="{{article.preview.url}}" alt="">
-    {%endfor%}
-    {%endif%}
+    <header class="header">
+        <div class="logo">
+            DOTA 2
+        </div>
+        <nav class="header__navigator navigator">
+            <ul class="header__menu menu">
+                <li class="menu__item"><a class="menu__link" href="#">Menu link</a></li>
+                <li class="menu__item"><a class="menu__link" href="#">Menu link</a></li>
+                <li class="menu__item"><a class="menu__link" href="#">Menu link</a></li>
+                <li class="menu__item"><a class="menu__link" href="#">Menu link</a></li>
+            </ul>
+            <ul class="header__list">
+                <li class="menu__item"><a href="#">
+                        <img class="search-icon" src="{% static 'articles/icons/search.svg' %}" alt="">
+                    </a></li>
+                <input class="search-input" type="text">
+                <li class="menu__item"><a href="#">
+                        <img src="{% static 'articles/icons/login.svg'%}" alt="" class="login-icon">
+
+                    </a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <div class="wraper">
+        <nav class="category-navigator navigator">
+            <ul class="category-navigator__menu menu">
+                <li class="menu__item"><a href="#" class="menu__link">Танки</a></li>
+                <li class="menu__item"><a href="#" class="menu__link">Хилы</a></li>
+                <li class="menu__item"><a href="#" class="menu__link">ДД</a></li>
+                <li class="menu__item"><a href="#" class="menu__link">Торговцы</a></li>
+                <li class="menu__item"><a href="#" class="menu__link">Гилдмастеры</a></li>
+                <li class="menu__item"><a href="#" class="menu__link">Квестгиверы</a></li>
+                <li class="menu__item"><a href="#" class="menu__link">Кузнецы</a></li>
+                <li class="menu__item"><a href="#" class="menu__link">Зельевары</a></li>
+                <li class="menu__item"><a href="#" class="menu__link">Кожевники</a></li>
+                <li class="menu__item"><a href="#" class="menu__link">Мастера заклинаний</a></li>
+                <li class="menu__item"><a href="#" class="menu__link">Все</a></li>
+            </ul>
+        </nav>
+        {%if articles%}
+        {%for article in articles%}
+        <div class="post">
+            <h2 class="post__title">{{article.title}}</h2>
+            <img src="{{article.preview.url}}" alt="" class="post__main-img">
+            <p class="post__short-description">{{article.content}}</p>
+            <div class="post__statistics">
+                <p class="post__date">{{article.create_at}} </p>
+                <div class="post__ER">
+                    <div class="post__like">
+                        <img src="{% static 'articles/icons/like.svg'%}" alt="" class="like-icon">
+                        <p class="like-count">{{article.rating}}</p>
+                    </div>
+                    <div class="post__comment">
+                        <img src="{% static 'articles/icons/comment.svg'%}" alt="" class="comment-icon">
+                        <p class="comment-count">10</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+        {%endif%}
+    </div>
+
 </body>
 
 </html>

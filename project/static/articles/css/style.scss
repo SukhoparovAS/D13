@@ -1,0 +1,155 @@
+@import "stylenull.scss";
+
+
+body{
+    font-family: 'Times New Roman', Times, sans-serif;
+    font-size: 16px;
+    background-color: #222222;
+    color: #fff;
+}
+
+.header{
+    height: 75px;
+    width: 1170px;
+    margin: 82px auto;
+    margin-bottom: 35px;
+    padding: 0 20px;
+    background-color: #26272C;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+
+    .logo{
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    &__menu{
+        margin-left: 150px;
+    }
+    &__list{
+        display: flex;
+        align-items: center;
+    }
+}
+
+.search-input{
+    width: 200px;
+    height: 22px;
+    font-size: 20px;
+    background-color: #3f3f41;
+    color: #fff;
+    //display: none;
+}
+.like-icon, .comment-icon, .search-icon{
+    width: 20px;
+    height: 20px;
+}
+
+.comment-icon, .like-icon{
+    margin-right: 5px;
+}
+
+.login-icon{
+    width: 25px;
+    height: 25px;
+}
+
+
+
+.navigator{
+    height: 100%;
+    display: flex;
+    flex: auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    &__item{
+        margin: 0 7px;
+        height: 100%;
+    }
+    &__link{
+        display: flex;
+        color: #fff;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        &:hover{
+            background-color: #3f3f41;
+        }
+    }
+}
+
+.wraper{
+    margin: 0 auto;
+    width: 850px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.category-navigator{
+    height: 50px;
+    background-color: #26272C;
+    border-radius: 10px;
+
+    &__menu{
+        margin: 0 5px;
+        display: flex;
+        justify-content: space-between;
+        flex: auto;
+        .menu__item{
+            margin: 0;
+        }
+    }
+}
+
+.post{
+    margin-top: 48px;
+    background-color: #26272C;
+    border-radius: 10px;
+    padding: 10px 0;
+
+    &__title{
+        margin: 0 12px;
+        margin-bottom: 18px;
+        font-size: 30px;
+    }
+    &__main-img{
+        margin-bottom: 18px;
+        width: 850px;
+        height: 478px;
+        object-fit: cover;
+    }
+
+    &__short-description{
+        margin: 0 12px;
+        margin-bottom: 18px;
+    }
+
+    &__statistics{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__ER{
+        display: flex;
+    }
+
+    &__like, &__comment{
+        display: flex;
+        margin: 0 12px;
+    }
+
+    &__date{
+        margin-left: 12px;
+    }
+}
