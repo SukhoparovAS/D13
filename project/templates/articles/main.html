@@ -61,7 +61,7 @@
         <div class="post">
             <h2 class="post__title">{{article.title}}</h2>
             <img src="{{article.preview.url}}" alt="" class="post__main-img">
-            <p class="post__short-description">{{article.content}}</p>
+            <p class="post__short-description">{{article.content|safe}}</p>
             <div class="post__statistics">
                 <p class="post__date">{{article.create_at}} </p>
                 <div class="post__ER">
