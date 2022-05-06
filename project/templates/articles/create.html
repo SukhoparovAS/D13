@@ -1,0 +1,15 @@
+{%extends 'articles/default.html'%}
+{% load static %}
+{%block content%}
+<div class="wraper">
+    <form class="create-form" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form }}
+        <!-- Теперь нам нужна только готовая форма и кнопка -->
+        <input class='create-form__btn btn' type="submit" value="Сохранить">
+    </form>
+</div>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+{%endblock content%}
