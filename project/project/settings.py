@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'debug_toolbar',
+    'django_filters',
 
     'articles',
 ]

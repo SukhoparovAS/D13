@@ -20,15 +20,21 @@
         <nav class="header__navigator navigator">
             <ul class="header__menu menu">
                 <li class="menu__item"><a class="menu__link" href="#">{{user.username}}</a></li>
-                <li class="menu__item"><a class="menu__link" href="create">Создать статью</a></li>
-                <li class="menu__item"><a class="menu__link" href="#">Menu link</a></li>
+                <li class="menu__item"><a class="menu__link" href="/create">Создать статью</a></li>
+                <li class="menu__item"><a class="menu__link" href="/my_articles">Мои статьи</a></li>
                 <li class="menu__item"><a class="menu__link" href="#">Menu link</a></li>
             </ul>
             <ul class="header__list">
-                <li class="menu__item"><a href="#">
-                        <img class="search-icon" src="{% static 'articles/icons/search.svg' %}" alt="">
-                    </a></li>
-                <input class="search-input" type="text">
+
+                <form method="GET" action="{% url 'articleList' %}">
+                    <li class="menu__item"> <button class="search-btn" type="submit"><img class="search-icon"
+                                src="{% static 'articles/icons/search.svg' %}" alt=""></button>
+                        <input class="search-input" type="text" name="search">
+
+                    </li>
+
+                </form>
+
                 <li class="menu__item">
                     {% if not is_authenticated %}
                     <a href="/login">

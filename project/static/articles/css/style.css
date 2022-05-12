@@ -117,6 +117,10 @@ body {
           align-items: center;
 }
 
+.header__list .search-btn {
+  background-color: rgba(0, 0, 0, 0);
+}
+
 .search-input {
   width: 200px;
   height: 22px;
@@ -296,11 +300,15 @@ body {
   margin-bottom: 30px;
 }
 
-.comments__text {
+.comments__text, .comments__text-self {
   margin-bottom: 15px;
   padding: 10px;
   border: 1px solid #fff;
   border-radius: 10px;
+}
+
+.comments__text-self {
+  border: 2px solid #39b41b;
 }
 
 .comments__textarea {
@@ -371,4 +379,8 @@ body {
 
 .create-form__shortDescription {
   font-size: 16px;
+}
+
+.update-link {
+  color: #fff;
 }

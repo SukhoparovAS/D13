@@ -12,18 +12,73 @@
     <div class="comments">
         {%if page_obj%}
         {%for comment in page_obj%}
+        {%if article.user == user%}
         <div class="comments__item">
+
+            {%if comment.user == user%}
+            <p class="comments__text-self">
+                {{comment.text}}
+            </p>
+            <div>
+                <a style="color: rgba(134, 132, 248, 0.986);" href="?delete={{comment.id}}">удалить</a>
+                {{comment.status}}
+            </div>
+            {%else%}
             <p class="comments__text">
                 {{comment.text}}
             </p>
+            {%endif%}
+
+
+            <div>
+                {%if comment.status == 'expects' %}
+                <a style="color: rgba(134, 132, 248, 0.986);" href="?accept={{comment.id}}">Принять</a>
+                <a style="color: rgba(134, 132, 248, 0.986);" href="?reject={{comment.id}}">Отклонить</a>
+                {{comment.status}}
+                {%endif%}
+
+                {%if comment.status == 'rejected' %}
+                <a style="color: rgba(134, 132, 248, 0.986);" href="?accept={{comment.id}}">Принять</a>
+                {{comment.status}}
+                {%endif%}
+
+                {%if comment.status == 'accepted' %}
+                <a style="color: rgba(134, 132, 248, 0.986);" href="?reject={{comment.id}}">Отклонить</a>
+                {{comment.status}}
+                {%endif%}
+            </div>
         </div>
+        {%else%}
+        {%if comment.status == 'accepted'%}
+        <div class="comments__item">
+
+            {%if comment.user == user%}
+            <p class="comments__text-self">
+                {{comment.text}}
+            </p>
+            <div>
+                <a style="color: rgba(134, 132, 248, 0.986);" href="#">удалить</a>
+                {{comment.status}}
+            </div>
+            {%else%}
+            <p class="comments__text">
+                {{comment.text}}
+            </p>
+            {%endif%}
+        </div>
+        {%endif%}
+
+        {%endif%}
+
+
+
         {%endfor%}
         {%endif%}
 
 
 
 
-        {% if page_obj %}
+        {% if page_obj and page_obj.paginator.num_pages > 1 %}
         <div class="paginate">
             <!-- Если доступна предыдущая страница, то даём ссылку на неё и самую первую страницу -->
             {% if page_obj.has_previous %}

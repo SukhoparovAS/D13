@@ -4,7 +4,6 @@ from turtle import title
 from django.forms import ModelForm
 from .models import Article
 from django import forms
-from ckeditor.fields import RichTextField
 
 
 class ArticleCreateForm(ModelForm):

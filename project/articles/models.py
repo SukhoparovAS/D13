@@ -47,7 +47,8 @@ class Article(models.Model):
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    article = models.ForeignKey(
+        Article, on_delete=models.CASCADE, related_name='comments')
     text = models.TextField(max_length=500, default='Текст комментария')
 
     ACCEPTEET = 'accepted'
