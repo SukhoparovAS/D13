@@ -23,7 +23,7 @@
         <p class="post__short-description">{{article.shortDescription}}</p>
         <div class="post__statistics">
             <p class="post__date">{{article.create_at}} </p>
-            {% if is_authenticated and user == article.user%}
+            {% if user.is_authenticated and user == article.user%}
             <div>
                 <a class="update-link" href="article_update/{{article.pk}}">Редактировать</a>
             </div>

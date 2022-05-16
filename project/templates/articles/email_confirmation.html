@@ -1,0 +1,11 @@
+{%extends 'articles/default.html'%}
+{% block content %}
+<div class="wraper">
+    <form class="login" method="post">
+        {% csrf_token %}
+        <input type="text" name="confirmationCode" value="" required="" id="id_confirmationCode"
+            placeholder="Введите код">
+        <input class="btn" type="submit" value="Войти">
+    </form>
+</div>
+{% endblock %}

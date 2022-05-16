@@ -1,21 +1,15 @@
 {%extends 'articles/default.html'%}
-
 {% block content %}
-<h2> Войти в систему </h2>
-<form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    <table>
-        <tr>
-            <td>{{ form.username.label_tag }}</td>
-            <td>{{ form.username }}</td>
-        </tr>
-        <tr>
-            <td>{{ form.password.label_tag }}</td>
-            <td>{{ form.password }}</td>
-        </tr>
-    </table>
+<div class="wraper">
 
-    <input type="submit" value="Войти">
-</form>
-<button> <a href="/signup"> Регистрация </a></button>
+    <form class="login" method="post" action="{% url 'login' %}">
+        {{error}}
+        {% csrf_token %}
+        <p>{{ form.username }}</p>
+        <p>{{ form.password }}</p>
+        <input class="btn" type="submit" value="Войти">
+        <a class="btn" href="/signup"> Регистрация </a>
+    </form>
+
+</div>
 {% endblock %}

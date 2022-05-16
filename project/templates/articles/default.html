@@ -15,14 +15,14 @@
 <body>
     <header class="header">
 
-        <a class="logo" href="/">GAY CLUB</a>
+        <a class="logo" href="/">GACHI CLUB</a>
 
         <nav class="header__navigator navigator">
             <ul class="header__menu menu">
                 <li class="menu__item"><a class="menu__link" href="#">{{user.username}}</a></li>
                 <li class="menu__item"><a class="menu__link" href="/create">Создать статью</a></li>
                 <li class="menu__item"><a class="menu__link" href="/my_articles">Мои статьи</a></li>
-                <li class="menu__item"><a class="menu__link" href="#">Menu link</a></li>
+                <li class="menu__item"><a class="menu__link" href="/my_comments">Мои отклики</a></li>
             </ul>
             <ul class="header__list">
 
@@ -36,13 +36,13 @@
                 </form>
 
                 <li class="menu__item">
-                    {% if not is_authenticated %}
-                    <a href="/login">
+                    {% if not user.is_authenticated %}
+                    <a href="/login/">
                         <img src="{% static 'articles/icons/login.svg'%}" alt="" class="login-icon">
 
                     </a>
                     {%else%}
-                    <a href="/logout">
+                    <a href="/logout/">
                         <img src="{% static 'articles/icons/login.svg'%}" alt="" class="login-icon">
                     </a>
 

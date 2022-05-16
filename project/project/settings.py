@@ -29,7 +29,8 @@ ALLOWED_HOSTS = ['*']
 
 SITE_ID = 1
 
-LOGIN_URL = 'login/'
+#LOGIN_URL = 'login/'
+LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 
 STATIC_URL = 'static/'
@@ -60,7 +61,10 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'django_filters',
 
-    'articles',
+
+
+
+    'articles.apps.ArticlesConfig',
 ]
 
 MIDDLEWARE = [
@@ -80,7 +84,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -89,10 +93,13 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'articles.context_processors.custom_proc',
+
+                'django.template.context_processors.request',
             ],
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
@@ -125,10 +132,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
-# Internationalization
-# https://docs.djangoproject.com/en/4.0/topics/i18n/
 
 LANGUAGE_CODE = 'ru-ru'
 
@@ -226,3 +229,11 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
+
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'novikov.e.s'
+EMAIL_HOST_PASSWORD = 'testdjangopass'
+EMAIL_USE_SSL = True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER+'@yandex.ru'

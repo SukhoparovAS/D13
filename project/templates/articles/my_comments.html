@@ -1,18 +1,18 @@
 {%extends 'articles/default.html'%}
+{% load static %}
+
 {%block content%}
 <div class="wraper">
+    <form method="GET">
+        {{ filter.form }}
+        <!-- Форму от фильтров за нас сделает Django. А вот кнопку, увы, придётся делать самому -->
+        <input type="submit" value="Найти">
+    </form>
 
-    <div class="post">
-        <h2 class="post__title">{{article.title}}</h2>
-        <img src="{{article.preview.url}}" alt="" class="post__main-img">
-        <div class="post__content">
-            {{article.content|safe}}
-        </div>
-    </div>
     <div class="comments">
         {%if page_obj%}
         {%for comment in page_obj%}
-        {%if article.user == user%}
+        {%if comment.article.user == user%}
         <div class="comments__item">
 
             {%if comment.user == user%}
@@ -47,25 +47,6 @@
                 {%endif%}
             </div>
         </div>
-        {%else%}
-
-        {%if comment.user == user%}
-        <div class="comments__item">
-            <p class="comments__text-self">
-                {{comment.text}}
-            </p>
-            <div class="comments__btn-container">
-                <a class="comments__btn" href="?delete={{comment.id}}">удалить</a>
-                <p class="comments__{{comment.status}}">{{comment.status}}</p>
-            </div>
-        </div>
-        {%elif comment.status == 'accepted'%}
-        <div class="comments__item">
-            <p class="comments__text">
-                {{comment.text}}
-            </p>
-        </div>
-        {%endif%}
         {%endif%}
         {%endfor%}
         {%endif%}
@@ -102,16 +83,6 @@
         {% endif %}
 
 
-        {%if is_authenticated%}
-        <form method="POST">
-            {% csrf_token %}
-
-            <textarea class="comments__textarea" name="comment_text"></textarea>
-            <input class="comments__btn btn" type="submit" value="Отправить">
-        </form>
-        {%endif%}
     </div>
-
-
 </div>
 {%endblock content%}
