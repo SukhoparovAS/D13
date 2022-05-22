@@ -1,5 +1,8 @@
 {%extends 'articles/default.html'%}
 {%block content%}
+{% load static %}
+
+
 <div class="wraper">
 
     <div class="post">
@@ -7,6 +10,26 @@
         <img src="{{article.preview.url}}" alt="" class="post__main-img">
         <div class="post__content">
             {{article.content|safe}}
+        </div>
+        <div class="post__statistics">
+            <p class="post__date">{{article.create_at}} </p>
+            {% if user.is_authenticated and user == article.user%}
+            <div>
+                <a class="update-link" href="article_update/{{article.pk}}">Редактировать</a>
+                <a class="update-link" href="article_delete/{{article.pk}}">Удалить</a>
+            </div>
+            {% endif %}
+            <div class="post__ER">
+                <div class="post__like">
+                    <a href="?likeArticle={{article.pk}}"><img src=" {% static 'articles/icons/like.svg' %}" alt=""
+                            class="like-icon"></a>
+                    <p class="like-count">{{article.rating}}</p>
+                </div>
+                <div class="post__comment">
+                    <img src="{% static 'articles/icons/comment.svg'%}" alt="" class="comment-icon">
+                    <p class="comment-count">{{article.commentsCount}}</p>
+                </div>
+            </div>
         </div>
     </div>
     <div class="comments">

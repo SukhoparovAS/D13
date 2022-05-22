@@ -27,12 +27,19 @@ class Article(models.Model):
         upload_to='image', height_field=None, width_field=None, max_length=100)
     user = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=None)
     category = models.ForeignKey(
-        Category, on_delete=models.SET_DEFAULT, default=None)
+        Category, on_delete=models.SET_DEFAULT, default=None,)
     create_at = models.DateTimeField(auto_now_add=True)
     rating = models.IntegerField(default=0)
 
     def __str__(self):
         return f'{self.title}'
+
+
+class LikedArticle(models.Model):
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='likedArticle')
+    article = models.ForeignKey(
+        Article, on_delete=models.CASCADE, related_name='likedArticle')
 
 
 class Comment(models.Model):

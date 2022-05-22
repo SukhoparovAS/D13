@@ -23,14 +23,18 @@
         <p class="post__short-description">{{article.shortDescription}}</p>
         <div class="post__statistics">
             <p class="post__date">{{article.create_at}} </p>
+            <p>Автор: {{article.user}}</p>
+            <p>Категория: {{article.category}}</p>
             {% if user.is_authenticated and user == article.user%}
             <div>
                 <a class="update-link" href="article_update/{{article.pk}}">Редактировать</a>
+                <a class="update-link" href="article_delete/{{article.pk}}">Удалить</a>
             </div>
             {% endif %}
             <div class="post__ER">
                 <div class="post__like">
-                    <img src="{% static 'articles/icons/like.svg'%}" alt="" class="like-icon">
+                    <a href="?likeArticle={{article.pk}}"><img src=" {% static 'articles/icons/like.svg' %}" alt=""
+                            class="like-icon"></a>
                     <p class="like-count">{{article.rating}}</p>
                 </div>
                 <div class="post__comment">

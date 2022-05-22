@@ -14,11 +14,13 @@
             {% if is_authenticated %}
             <div>
                 <a class="update-link" href="article_update/{{article.pk}}">Редактировать</a>
+                <a class="update-link" href="article_delete/{{article.pk}}">Удалить</a>
             </div>
             {% endif %}
             <div class="post__ER">
                 <div class="post__like">
-                    <img src="{% static 'articles/icons/like.svg'%}" alt="" class="like-icon">
+                    <a href="?likeArticle={{article.pk}}"><img src=" {% static 'articles/icons/like.svg' %}" alt=""
+                            class="like-icon"></a>
                     <p class="like-count">{{article.rating}}</p>
                 </div>
                 <div class="post__comment">

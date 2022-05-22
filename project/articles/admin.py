@@ -1,6 +1,6 @@
 from xml.etree.ElementTree import Comment
 from django.contrib import admin
-from .models import Article, Category, Comment, Profile
+from .models import Article, Category, Comment, Profile, LikedArticle
 from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
@@ -23,3 +23,4 @@ admin.site.register(Article, ArticleAdmin)
 admin.site.register(Profile)
 admin.site.register(Category)
 admin.site.register(Comment)
+admin.site.register(LikedArticle)

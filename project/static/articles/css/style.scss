@@ -297,10 +297,39 @@ body{
 }
 
 .login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #26272C;
     border-radius: 10px;
     padding: 15px;
-    width: 400px;
     margin: 0 auto;
     margin-bottom: 30px;
+
+    &__input{
+    width: 200px;
+    height: 22px;
+    font-size: 16px;
+    background-color: #3f3f41;
+    color: #fff;
+    border-radius: 5px;
+    padding: 3px 5px;
+    margin-bottom: 10px;
+    }
+
+    &__btn{
+        display: block;
+        color: #fff;
+        background-color: #3f3f41;
+        font-size: 15px;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 15px;
+        padding: 5px;
+        margin-right: 10px; 
+    }
+
+    &__btn-wrap{
+        display: flex;
+    }
 }

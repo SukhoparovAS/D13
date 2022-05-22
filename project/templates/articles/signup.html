@@ -1,10 +1,19 @@
 {%extends 'articles/default.html'%}
 
 {% block content %}
-<h2> Войти в систему </h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Продолжить">
-</form>
+<div class="wraper">
+    <form class="login" method="post">
+        {% csrf_token %}
+        {%for field in form%}
+        {{ field.errors }}
+        {{ field }}
+
+        {%endfor%}
+        <div class="login__btn-wrap">
+            <a class="login__btn" href="/login"> Войти </a>
+            <input class="login__btn" type="submit" value="Продолжить">
+
+        </div>
+    </form>
+</div>
 {% endblock %}

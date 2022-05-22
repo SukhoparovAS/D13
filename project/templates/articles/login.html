@@ -7,8 +7,11 @@
         {% csrf_token %}
         <p>{{ form.username }}</p>
         <p>{{ form.password }}</p>
-        <input class="btn" type="submit" value="Войти">
-        <a class="btn" href="/signup"> Регистрация </a>
+        <div class="login__btn-wrap">
+            <input class="login__btn" type="submit" value="Войти">
+            <a class="login__btn" href="/signup"> Регистрация </a>
+        </div>
+
     </form>
 
 </div>

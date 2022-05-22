@@ -2,7 +2,6 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives
-from django.core.mail import send_mail
 from .models import Comment, Profile
 from django.contrib.auth.models import User
 import random
@@ -14,6 +13,15 @@ def create_user_profile(sender, instance, created, **kwargs):
         random.seed()
         code = random.randint(10000, 99999)
         Profile.objects.create(user=instance, confirmationCode=code)
+        userEmail = [instance.email]
+        emailTitle = 'Подтверждение регистрации'
+        msg = EmailMultiAlternatives(
+            subject=f'{emailTitle}',
+            body=f'Код подтверждения: {code}',
+            from_email='novikov.e.s@yandex.ru',
+            to=userEmail,
+        )
+        msg.send()
 
 
 @receiver(post_save, sender=User)

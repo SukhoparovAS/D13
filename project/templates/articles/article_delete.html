@@ -1,0 +1,32 @@
+{%extends 'articles/default.html'%}
+{% load static %}
+
+{%block content%}
+<div class="wraper">
+    <div class="post">
+        <a class="post__title" href="article/{{article.id}}">{{article.title}}</a>
+        <img src="{{article.preview.url}}" alt="" class="post__main-img">
+        <p class="post__short-description">{{article.shortDescription}}</p>
+        <div class="post__statistics">
+            <p class="post__date">{{article.create_at}} </p>
+            <div class="post__ER">
+                <div class="post__like">
+                    <a href="?likeArticle={{article.pk}}"><img src=" {% static 'articles/icons/like.svg' %}" alt=""
+                            class="like-icon"></a>
+                    <p class="like-count">{{article.rating}}</p>
+                </div>
+                <div class="post__comment">
+                    <img src="{% static 'articles/icons/comment.svg'%}" alt="" class="comment-icon">
+                    <p class="comment-count">{{article.commentsCount}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <input class="btn" type="submit" value="подтвердить">
+    </form>
+</div>
+
+
+{%endblock content%}

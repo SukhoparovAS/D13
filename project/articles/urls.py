@@ -1,6 +1,6 @@
 from django.urls import path, include
-from .views import articleDetail, ArticleCreateView, ArticleUpdateView, articleList, myArticles, myComments, loginUser, registerUser, emailConfirmation
-from django.contrib.auth.views import LoginView, LogoutView
+from .views import articleDetail, ArticleCreateView, ArticleUpdateView, articleList, myArticles, myComments, loginUser, registerUser, emailConfirmation, ArticleDelete
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('', articleList, name='articleList'),
@@ -15,4 +15,5 @@ urlpatterns = [
     path('signup/', registerUser, name='signup'),
     path('email_confirmation/<int:pk>',
          emailConfirmation, name='emailConfirmation'),
+    path('article_delete/<int:pk>', ArticleDelete.as_view()),
 ]

@@ -3,8 +3,8 @@
 <div class="wraper">
     <form class="login" method="post">
         {% csrf_token %}
-        <input type="text" name="confirmationCode" value="" required="" id="id_confirmationCode"
-            placeholder="Введите код">
+        Введите код подтверждения отправленный на {{email}}
+        {{form.confirmationCode}}
         <input class="btn" type="submit" value="Войти">
     </form>
 </div>
